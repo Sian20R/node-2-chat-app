@@ -1,4 +1,4 @@
-var generatedMessage = (from, text) => {
+var generateMessage = (from, text) => {
     return {
         from,
         text,
@@ -7,5 +7,5 @@ var generatedMessage = (from, text) => {
 };
 
 module.exports = {
-    generatedMessage
+    generateMessage
 };
