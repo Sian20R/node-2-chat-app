@@ -16,27 +16,14 @@ app.use(express.static(publicPath));      //express.static (take the absolute pa
 io.on('connection', (socket) => {
     console.log('Connected to server');
 
-    // // Emitting Custom Event
-    // socket.emit('newEmail', {
-    //     from: 'alex@exmaple.com',
-    //     text: 'Hey, Whats going on?',
-    //     createdAt: 23445
-    // });
 
-    // // Listening Custom Event 
-    // socket.on('createEmail', (newEmail) => {
-    //     console.log('createEmail', newEmail);
-    // });
-
-
-    socket.emit('newMessage', {
-        from: 'seawkerboon@gmail.com',
-        text: 'This is a new message',
-        createdAt: Date.now()
-    });
-
-    socket.on('createMessage', (newMessage) => {
-        console.log('createMessage', newMessage);
+    socket.on('createMessage', (message) => {
+        console.log('createMessage', message);
+        io.emit('newMessage', {                     // Broadcast Emitting
+            from: message.from,
+            text: message.text,
+            createdAt: Date.now()
+        });
     });
 
     socket.on('disconnect', () => {
