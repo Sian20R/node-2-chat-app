@@ -25,6 +25,10 @@ class Users {
 
         return namesArray;
     }
+    getUserByName(name) {
+        var user = this.users.find((user) => user.name === name)
+        return user;
+    }
 }
 
 module.exports = {

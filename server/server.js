@@ -24,6 +24,9 @@ io.on('connection', (socket) => {
     socket.on('join', (params, callback) => {
         if (!isRealString(params.name) || !isRealString(params.room))
             return callback('Name or Room name are required');
+
+        if (users.getUserByName(params.name))
+            return callback('Username already exist');
         
         params.room = params.room.toLowerCase();
 
