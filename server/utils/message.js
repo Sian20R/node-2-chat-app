@@ -1,8 +1,10 @@
+const moment = require('moment');
+
 var generateMessage = (from, text) => {
     return {
         from,
         text,
-        createdAt: parseInt(Date.now)
+        createdAt: moment().valueOf()       // return current timestamp
     }
 };
 
@@ -10,7 +12,7 @@ var generateLocationMessage = (from, latitude, longtitude) => {
     return {
         from,
         url: `https://www.google.com/maps?q=${latitude},${longtitude}`,
-        createdAt: parseInt(Date.now)
+        createdAt: moment().valueOf()
     }
 };
 
